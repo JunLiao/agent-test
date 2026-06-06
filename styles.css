@@ -1,7 +1,19 @@
 :root {
+  --bg: #f5f7fb;
+  --text: #111827;
+  --app-bg: #ffffff;
+  --app-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  --input-border: #d1d5db;
+  --item-border: #e5e7eb;
+  --item-bg: #f9fafb;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --muted: #6b7280;
   font-family: Arial, sans-serif;
-  background: #f5f7fb;
-  color: #111827;
+  background: var(--bg);
+  color: var(--text);
 }
 
 * {
@@ -14,13 +26,16 @@ body {
   display: grid;
   place-items: center;
   padding: 24px;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 .app-shell {
   width: min(560px, 100%);
-  background: #ffffff;
+  background: var(--app-bg);
   border-radius: 18px;
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  box-shadow: var(--app-shadow);
   padding: 32px;
 }
 
@@ -39,14 +54,16 @@ h1 {
 .todo-form input {
   flex: 1;
   padding: 14px 16px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--input-border);
   border-radius: 12px;
   font-size: 1rem;
+  background: transparent;
+  color: inherit;
 }
 
 .todo-form button {
   border: none;
-  background: #2563eb;
+  background: var(--primary);
   color: white;
   padding: 14px 18px;
   border-radius: 12px;
@@ -55,7 +72,7 @@ h1 {
 }
 
 .todo-form button:hover {
-  background: #1d4ed8;
+  background: var(--primary-hover);
 }
 
 .todo-list {
@@ -71,9 +88,9 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--item-border);
   border-radius: 14px;
-  background: #f9fafb;
+  background: var(--item-bg);
 }
 
 .todo-item span {
@@ -83,12 +100,12 @@ h1 {
 
 .todo-item.completed span {
   text-decoration: line-through;
-  color: #6b7280;
+  color: var(--muted);
 }
 
 .delete-button {
   border: none;
-  background: #ef4444;
+  background: var(--danger);
   color: white;
   padding: 10px 14px;
   border-radius: 10px;
@@ -97,5 +114,43 @@ h1 {
 }
 
 .delete-button:hover {
-  background: #dc2626;
+  background: var(--danger-hover);
+}
+
+/* Dark theme variables applied by adding .dark to <html> or <body> */
+.dark {
+  --bg: #0b1020;
+  --text: #e6eef8;
+  --app-bg: #071026;
+  --app-shadow: none;
+  --input-border: #293241;
+  --item-border: #1f2a37;
+  --item-bg: #071226;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --danger: #f87171;
+  --danger-hover: #ef4444;
+  --muted: #94a3b8;
+}
+
+/* small header layout for toggle */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+#theme-toggle {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.15rem;
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+
+#theme-toggle[aria-pressed="true"] {
+  background: rgba(255,255,255,0.06);
 }
